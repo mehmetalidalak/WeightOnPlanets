@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WeighOnPlanets</string>
+    <string name="app_name">WeightOnPlanets</string>
     <string name="app_title">How much your weight on other planets ?</string>
     <string name="weight_hint_editText">Enter your weight on Earth</string>
     <string name="calculate_text">calculate</string>
