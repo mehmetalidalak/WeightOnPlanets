@@ -1,9 +1,7 @@
 package com.example.weighonplanets
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.CheckBox
 import android.widget.Toast
@@ -45,10 +43,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString("result", result_text.text.toString())
+        outState.putString("result", result_text.text.toString())  // It save small piece of data into a bundle.
     }
 
-    fun ConvertWeight(weight: Double, toPound: Boolean): Double {
+    private fun convertWeight(weight: Double, toPound: Boolean): Double {
         return if (toPound)
             weight * POUND_CONSTANT
         else
@@ -62,7 +60,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val weightInfoKG = weight_editText.text.toString()
         val isChecked = v.isChecked
         if (TextUtils.isEmpty(weightInfoKG)) {
-            ResetAllCB()
+            resetAllCB()
             Toast.makeText(this, "Field can not be empty!", Toast.LENGTH_SHORT).show()
             result_text.text = resources.getText(R.string.weight_result_default)
             return
@@ -72,36 +70,36 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 R.id.CB_Jupiter -> {
                     CB_Venus.isChecked = false
                     CB_Mars.isChecked = false
-                    ShowUserWeight(ConvertWeight(weightInfoKG.toDouble(), true) * JUPITER_CONSTANT)
+                    showUserWeight(convertWeight(weightInfoKG.toDouble(), true) * JUPITER_CONSTANT)
 
                 }
 
                 R.id.CB_Mars -> {
                     CB_Jupiter.isChecked = false
                     CB_Venus.isChecked = false
-                    ShowUserWeight(ConvertWeight(weightInfoKG.toDouble(), true) * MARS_CONSTANT)
+                    showUserWeight(convertWeight(weightInfoKG.toDouble(), true) * MARS_CONSTANT)
                 }
 
 
                 R.id.CB_Venus -> {
                     CB_Mars.isChecked = false
                     CB_Jupiter.isChecked = false
-                    ShowUserWeight(ConvertWeight(weightInfoKG.toDouble(), true) * VENUS_CONSTANT)
+                    showUserWeight(convertWeight(weightInfoKG.toDouble(), true) * VENUS_CONSTANT)
                 }
 
             }
         }
     }
 
-    fun ShowUserWeight(weight: Double) {
-        val poundToKG = ConvertWeight(weight, false)
+    private fun showUserWeight(weight: Double) {
+        val poundToKG = convertWeight(weight, false)
         result_text.text =
             resources.getText(R.string.weight_result).toString().plus(" ${poundToKG.format(2)}")
 
 
     }
 
-    fun ResetAllCB() {
+    private fun resetAllCB() {
         CB_Venus.isChecked = false
         CB_Mars.isChecked = false
         CB_Jupiter.isChecked = false
