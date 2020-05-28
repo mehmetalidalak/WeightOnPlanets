@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WeighOnPlanets</string>
+    <string name="app_title">How much your weight on other planets ?</string>
+    <string name="weight_hint_editText">Enter your weight on Earth</string>
+    <string name="calculate_text">calculate</string>
+    <string name="weight_result">Result :</string>
+    <string name="mars_text">MARS</string>
+    <string name="jupiter_text">JUPITER</string>
+    <string name="venus_text">VENUS</string>
+    <string name="weight_in_kg">Weight in KG :</string>
+    <string name="planetimage">PlanetImage</string>
+    <string name="weight_result_default">Result : 0</string>
+</resources>
